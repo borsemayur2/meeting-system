@@ -1,0 +1,39 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Name1",
+      "role": "Front-End Engineer"
+    },
+    {
+      "id": 2,
+      "name": "Name2",
+      "role": "Back-End Engineer"
+    },
+    {
+      "id": 3,
+      "name": "Name3",
+      "role": "Full-Stack Engineer"
+    }
+  ],
+  "meetings": [
+    {
+      "id": 1,
+      "user": 1,
+      "description": "desc1",
+      "slot": 1
+    }
+  ],
+  "slots": [
+    {
+      "id": 1,
+      "date": "11 July",
+      "time": "3:30 PM"
+    },
+    {
+      "time": "8:00 AM",
+      "date": "12 July",
+      "id": 2
+    }
+  ]
+}
