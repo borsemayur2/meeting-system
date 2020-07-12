@@ -1,0 +1,21 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Name1",
+      "role": "Front-End Engineer"
+    },
+    {
+      "id": 2,
+      "name": "Name2",
+      "role": "Back-End Engineer"
+    },
+    {
+      "id": 3,
+      "name": "Name3",
+      "role": "Full-Stack Engineer"
+    }
+  ],
+  "meetings": [],
+  "busyslots": []
+}

@@ -1,0 +1,24 @@
+.dateslot-container,
+.timeslot-container {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 0.5m;
+  box-shadow: 0 0 10px 1px lightgrey;
+}
+.dateslot,
+.timeslot {
+  margin: 10px 20px;
+  padding: 20px;
+  font-size: 24px;
+  border-radius: 0.8em;
+  box-shadow: 0 0 12px 2px lightgrey;
+}
+.timeslot-container {
+  margin: 20px;
+}
+.timeslot {
+  padding: 14px;
+  border: none;
+}

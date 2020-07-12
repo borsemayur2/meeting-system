@@ -1,0 +1,18 @@
+.user-header {
+  text-align: center;
+}
+.user-row {
+  display: flex;
+  width: 50%;
+  margin: 20px auto;
+  padding: 10px;
+  justify-content: space-around;
+  box-shadow: 0 0 10px 1px lightgray;
+  border-radius: 0.5em;
+  font-size: x-large;
+  color: grey;
+}
+.user-meet-button {
+  color: darkslateblue;
+  text-decoration: none;
+}

@@ -1,0 +1,17 @@
+.busySlots-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.busySlots-button {
+  font-size: x-large;
+  border: none;
+  font-weight: 600;
+  padding: 20px;
+  border-radius: .4em;
+  box-shadow: 0 0 10px 2px lightgray;
+}
+.busySlots-button:hover{
+    background-color: darkgrey;
+    color: white;
+}

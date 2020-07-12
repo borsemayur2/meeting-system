@@ -1,0 +1,22 @@
+.meeting-header {
+  text-align: center;
+}
+.meeting-card {
+  margin: 10px;
+  display: flex;
+  justify-content: space-around;
+  border-radius: 0.5em;
+  font-size: x-large;
+  align-items: center;
+}
+.meeting-card-header,
+.meeting-card-body {
+  border-radius: 0.2em;
+  padding: 20px;
+  margin: 10px;
+  box-shadow: 0 0 10px 1px lightgray;
+  border-radius: 0.5em;
+}
+.meeting-card-body {
+  flex: 1;
+}
