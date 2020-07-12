@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./BusySlots.css";
 import DateTimePicker from "./DateTimePicker";
 import {
   getBusySlots,
@@ -20,28 +21,24 @@ const BusySlots = (props) => {
     props.addBusySlot(
       busyData,
       (data) => {
-        console.log("RES", data);
         props.getBusySlots();
+        setTime([]);
       },
       (error) => {
-        console.log("ERROR", error);
         alert("Error occured during action. Please refresh the page");
       }
     );
   };
 
   const updateBusySlot = () => {
-    const busyData = {...busySlot, [date]: [...time,...busySlot[date]] };
-    console.log(busySlot,busyData)
-
+    const busyData = { ...busySlot, [date]: [...time, ...busySlot[date]] };
     props.updateBusySlot(
       busyData,
       (data) => {
-        console.log("RES", data);
         props.getBusySlots();
+        setTime([]);
       },
       (error) => {
-        console.log("ERROR", error);
         alert("Error occured during action. Please refresh the page");
       }
     );
@@ -50,7 +47,7 @@ const BusySlots = (props) => {
   const busySlot = props.busySlots.find((busySlot) => busySlot[date]);
 
   return (
-    <>
+    <div className="busySlots-container">
       <h1>BusySlots</h1>
       <DateTimePicker
         date={date}
@@ -62,11 +59,14 @@ const BusySlots = (props) => {
       />
 
       {Boolean(time.length) && (
-        <button onClick={busySlot ? updateBusySlot : addBusySlot}>
-          Mark as busy
-        </button>
+        <span
+          className="busySlots-button"
+          onClick={busySlot ? updateBusySlot : addBusySlot}
+        >
+          Mark Busy
+        </span>
       )}
-    </>
+    </div>
   );
 };
 

@@ -1,0 +1,12 @@
+.routes-container {
+  margin: 20px;
+  text-align: center;
+}
+.link {
+  margin: 20px;
+  border-radius: .6em;
+  padding: 10px;
+  box-shadow: 0 0 10px 2px lightgrey;
+  text-decoration: none;
+  font-size: 20px;
+}

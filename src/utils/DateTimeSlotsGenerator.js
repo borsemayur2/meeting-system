@@ -14,26 +14,26 @@ while (start <= endDate) {
 
 // Generate time slots
 for (let hour = 7; hour < 12; hour++) {
-  timeSlots.push(moment({ hour }).format("h:mm A"));
+  timeSlots.push(moment({ hour }).format("hh:mm A"));
 
   timeSlots.push(
     moment({
       hour,
       minute: 15,
-    }).format("h:mm A")
+    }).format("hh:mm A")
   );
 
   timeSlots.push(
     moment({
       hour,
       minute: 30,
-    }).format("h:mm A")
+    }).format("hh:mm A")
   );
 
   timeSlots.push(
     moment({
       hour,
       minute: 45,
-    }).format("h:mm A")
+    }).format("hh:mm A")
   );
 }

@@ -1,0 +1,25 @@
+.scheduler-header {
+  text-align: center;
+}
+.scheduler-form-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.scheduler-form-textbox {
+  width: 80%;
+  border: none;
+  box-shadow: 0 0 12px 2px lightgrey;
+}
+.scheduler-form-button {
+  font-size: x-large;
+  border: none;
+  font-weight: 600;
+  padding: 20px;
+  border-radius: 0.4em;
+  box-shadow: 0 0 10px 2px lightgray;
+}
+.scheduler-form-button:hover {
+  background-color: darkgrey;
+  color: white;
+}

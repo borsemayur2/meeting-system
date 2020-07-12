@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./Scheduler.css";
 import { connect } from "react-redux";
 import { useLocation } from "react-router-dom";
 import DateTimePicker from "./DateTimePicker";
@@ -29,7 +30,7 @@ const Scheduler = (props) => {
         user: location.state?.user?.id,
         description: descriptionProps.value,
         date,
-        time
+        time,
       },
       (meetingData) => {
         console.log(meetingData);
@@ -46,31 +47,28 @@ const Scheduler = (props) => {
 
   return (
     <div>
-      <h1>Schedule Meet for {location.state?.user?.name}</h1>
+      <h2 className="scheduler-header">
+        Schedule Meet for {location.state?.user?.name}
+      </h2>
       <DateTimePicker
-        user={location.state?.user || ""}
-        time={time}
-        setTime={setTime}
         date={date}
         setDate={setDate}
+        time={time}
+        setTime={setTime}
         busySlot={busySlot}
       />
       {date && time && location.state?.user && (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
+        <div className="scheduler-form-container">
           <textarea
             placeholder="Enter Meeting Description"
-            style={{ flex: 1 }}
+            className="scheduler-form-textbox"
             cols={5}
             rows={5}
             {...descriptionProps}
           />
-          <button onClick={scheduleMeeting}>Send Request</button>
+          <div className="scheduler-form-button" onClick={scheduleMeeting}>
+            Send Request
+          </div>
         </div>
       )}
     </div>
