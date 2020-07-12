@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { useLocation } from "react-router-dom";
 import DateTimePicker from "./DateTimePicker";
-import { addSlot, getSlots } from "../actions/slotsActions";
 import { addMeeting } from "../actions/meetingsActions";
-import {getBusySlots} from '../actions/busySlotsActions'
+import { getBusySlots } from "../actions/busySlotsActions";
 
 const useInput = (initialValue) => {
   const [value, setValue] = useState(initialValue);
@@ -21,29 +20,27 @@ const Scheduler = (props) => {
   const [descriptionProps, resetDescription] = useInput("");
 
   useEffect(() => {
-    props.getSlots();
     props.getBusySlots();
   }, []);
 
   const scheduleMeeting = () => {
-    props.addSlot({ time, date }, (slotData) => {
-      props.addMeeting(
-        {
-          user: location.state?.user?.id,
-          slot: slotData.id,
-          description: descriptionProps.value,
-        },
-        (meetingData) => {
-          console.log(meetingData);
-          props.getBusySlots();
-          alert("Meeting scheduled");
-        }
-      );
-    });
+    props.addMeeting(
+      {
+        user: location.state?.user?.id,
+        description: descriptionProps.value,
+        date,
+        time
+      },
+      (meetingData) => {
+        console.log(meetingData);
+        props.getBusySlots();
+        alert("Meeting scheduled");
+      }
+    );
     resetDescription();
   };
 
-  const busySlot = props.busySlots.find(busySlot=>busySlot[date])
+  const busySlot = props.busySlots.find((busySlot) => busySlot[date]);
 
   if (!location.state?.user?.name) return <h2>Please select a user</h2>;
 
@@ -56,7 +53,6 @@ const Scheduler = (props) => {
         setTime={setTime}
         date={date}
         setDate={setDate}
-        slots={props.slots}
         busySlot={busySlot}
       />
       {date && time && location.state?.user && (
@@ -83,6 +79,6 @@ const Scheduler = (props) => {
 
 const mapStateToProps = ({ slots, busySlots }) => ({ slots, busySlots });
 
-const mapDispatchToProps = { getSlots, addSlot, addMeeting, getBusySlots };
+const mapDispatchToProps = { addMeeting, getBusySlots };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Scheduler);

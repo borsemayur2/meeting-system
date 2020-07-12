@@ -22,6 +22,18 @@
       "user": 1,
       "description": "desc1",
       "slot": 1
+    },
+    {
+      "user": 2,
+      "slot": 3,
+      "description": "",
+      "id": 2
+    },
+    {
+      "user": 2,
+      "slot": 4,
+      "description": "descript1111",
+      "id": 3
     }
   ],
   "slots": [
@@ -34,6 +46,16 @@
       "time": "8:00 AM",
       "date": "12 July",
       "id": 2
+    },
+    {
+      "time": "9:00 AM",
+      "date": "11 July",
+      "id": 3
+    },
+    {
+      "time": "7:45 AM",
+      "date": "11 July",
+      "id": 4
     }
   ],
   "busyslots": [
@@ -42,7 +64,6 @@
       "12 July": [
         "7:45 AM",
         "8:15 AM",
-        "7:45 AM",
         "7:00 AM",
         "8:00 AM"
       ]
