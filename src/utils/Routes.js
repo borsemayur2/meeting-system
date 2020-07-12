@@ -16,9 +16,6 @@ const Routes = () => {
         <Link style={{ margin: 10 }} to="/users">
           Users
         </Link>
-        <Link style={{ margin: 10 }} to="/scheduler">
-          Scheduler
-        </Link>
         <Link style={{ margin: 10 }} to="/meetings">
           Meetings
         </Link>

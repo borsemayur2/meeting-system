@@ -1,50 +1,20 @@
 import React from "react";
-import moment from "moment";
+import { timeSlots, dateSlots } from "../utils/DateTimeSlotsGenerator";
 
-const DateTimePicker = ({ time, setTime, date, setDate, slots }) => {
-  const startDate = moment().subtract(3, "days");
-  const endDate = moment().add(5, "days");
-  let start = startDate.clone();
-  const dateSlots = [];
-  console.log("slots",slots)
-  while (start <= endDate) {
-    dateSlots.push(start.format("DD MMMM"));
-    start = start.add(1, "days");
-  }
-
-  const timeSlots = [];
-
-  for (let hour = 7; hour < 12; hour++) {
-    timeSlots.push(moment({ hour }).format("h:mm A"));
-
-    timeSlots.push(
-      moment({
-        hour,
-        minute: 15,
-      }).format("h:mm A")
-    );
-
-    timeSlots.push(
-      moment({
-        hour,
-        minute: 30,
-      }).format("h:mm A")
-    );
-
-    timeSlots.push(
-      moment({
-        hour,
-        minute: 45,
-      }).format("h:mm A")
-    );
-  }
-
+const DateTimePicker = ({
+  time,
+  setTime,
+  date,
+  setDate,
+  busySlot,
+  multiSelectSlots = false,
+}) => {
   return (
     <>
       <h2>
         <span style={{ color: "darkblue", margin: 10 }}>
           {date} {time}
-        </span>{" "}
+        </span>
       </h2>
       <h3>Select Date</h3>
       <div
@@ -86,21 +56,30 @@ const DateTimePicker = ({ time, setTime, date, setDate, slots }) => {
             }}
           >
             {timeSlots.map((_time) => (
-              <input
-              type="button"
+              <button
                 key={_time}
-                onClick={() => setTime(_time)}
+                disabled={busySlot && busySlot[date].includes(_time)}
+                onClick={() =>
+                  multiSelectSlots ? setTime([...time, _time]) : setTime(_time)
+                }
                 style={{
                   margin: "10px 12px",
                   padding: 20,
-                  background: _time === time ? "lightgrey" : "",
+                  background: multiSelectSlots
+                    ? time.includes(_time)
+                      ? "lightgrey"
+                      : ""
+                    : _time === time
+                    ? "lightgrey"
+                    : "",
                   fontSize: 20,
                   borderRadius: "1em",
                   boxShadow: "0 0 12px 2px lightgrey",
                   color: _time === time ? "white" : "black",
                 }}
-                value={_time}
-              />
+              >
+                {_time}
+              </button>
             ))}
           </div>
         </>

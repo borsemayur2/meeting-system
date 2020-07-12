@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import { useLocation } from "react-router-dom";
 import DateTimePicker from "./DateTimePicker";
 import { addSlot, getSlots } from "../actions/slotsActions";
 import { addMeeting } from "../actions/meetingsActions";
-import { connect } from "react-redux";
+import {getBusySlots} from '../actions/busySlotsActions'
 
 const useInput = (initialValue) => {
   const [value, setValue] = useState(initialValue);
@@ -19,11 +20,11 @@ const Scheduler = (props) => {
   const [time, setTime] = useState();
   const [descriptionProps, resetDescription] = useInput("");
 
-  console.log(props);
   useEffect(() => {
     props.getSlots();
+    props.getBusySlots();
   }, []);
-console.log(props)
+
   const scheduleMeeting = () => {
     props.addSlot({ time, date }, (slotData) => {
       props.addMeeting(
@@ -34,12 +35,15 @@ console.log(props)
         },
         (meetingData) => {
           console.log(meetingData);
+          props.getBusySlots();
           alert("Meeting scheduled");
         }
       );
     });
     resetDescription();
   };
+
+  const busySlot = props.busySlots.find(busySlot=>busySlot[date])
 
   if (!location.state?.user?.name) return <h2>Please select a user</h2>;
 
@@ -53,6 +57,7 @@ console.log(props)
         date={date}
         setDate={setDate}
         slots={props.slots}
+        busySlot={busySlot}
       />
       {date && time && location.state?.user && (
         <div
@@ -76,8 +81,8 @@ console.log(props)
   );
 };
 
-const mapStateToProps = (state) => (state);
+const mapStateToProps = ({ slots, busySlots }) => ({ slots, busySlots });
 
-const mapDispatchToProps = { getSlots, addSlot, addMeeting };
+const mapDispatchToProps = { getSlots, addSlot, addMeeting, getBusySlots };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Scheduler);
