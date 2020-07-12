@@ -20,7 +20,7 @@ const Meetings = (props) => {
         {props.meetings.map((meeting) => {
           const user = props.users.find((user) => user.id === meeting.user);
           return (
-            <div className="meeting-card">
+            <div key={meeting.id} className="meeting-card">
               <div className="meeting-card-header">
                 <span>{`${meeting.time}, ${meeting.date}`}</span>
                 <span></span>
