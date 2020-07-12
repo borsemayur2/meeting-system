@@ -2,8 +2,9 @@
 
 Please use following commands to get started
 
-1. `yarn server` to start the server on [http://localhost:3001](http://localhost:3001)
-2. `yarn start` to start the react server on [http://localhost:3000](http://localhost:3000)
+1. `yarn install` to install all dependencies
+2. `yarn server` to start the server on [http://localhost:3001](http://localhost:3001)
+3. `yarn start` to start the react server on [http://localhost:3000](http://localhost:3000)
 
 
 
